@@ -108,6 +108,16 @@ body {
   border-radius: 50%;
 }
 
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  padding: 3.2rem 6.4rem;
+
+  border-bottom: 1px solid var(--gray-8);
+}
+
 .surface {
   display: flex;
   flex-direction: column;
@@ -131,6 +141,13 @@ body {
   padding: 3.2rem;
 
   border-bottom: 1px solid var(--gray-8);
+
+  transition: 300ms;
+}
+
+.sticky-header {
+  position: fixed;
+  width: 100%;
 }
 
 .header-cover {
@@ -184,6 +201,12 @@ body {
 
   text-decoration: none;
   font-weight: 500;
+
+  transition: 300ms;
+}
+
+.nav-btn:hover {
+  background-color: rgb(186, 200, 255, 0.48);
 }
 
 .nav-btn--selected {
@@ -194,17 +217,6 @@ body {
   /*****************/
  /* ABOUT SECTION */
 /*****************/
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 1.6rem;
-
-  padding: 3.2rem 6.4rem;
-
-  border-bottom: 1px solid var(--gray-8);
-}
-
 .about--contact {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -236,9 +248,9 @@ body {
   gap: .4rem;
 }
 
-..experience--3 {
+.experience--3 {
   display: grid;
-  grid-template-columns: auto auto; 
+  grid-template-row: auto auto; 
   grid-area: .4rem;
 }
 
@@ -248,3 +260,7 @@ body {
   width: 4.8rem;
   height: 4.8rem;
 }
+
+  /*********************/
+ /* EDUCATION SECTION */
+/*********************/

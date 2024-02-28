@@ -1,12 +1,57 @@
 `strict mode`
 
 const currLocale = "en-US";
+
+const header = document.querySelector('#header');
+const headerCover = document.querySelector('.header-cover');
+const headerPFP = document.querySelector('.header-pfp');
+const headerDetails = document.querySelector('.header-details');
 const headerExperiences = document.querySelector('.header--experiences');
+const nav = document.querySelector('.nav');
+const navBtn = document.querySelectorAll('.nav-btn');
+
+const aboutSection = document.querySelector('.about');
 const aboutContact = document.querySelector('.about--contact');
+
 const experiencesSection = document.querySelector('.experiences');
+
+const educationSection = document.querySelector('.education');
 
 let now = new Date();
 console.log(now.getUTCMonth());
+
+/* Navigation */
+const stickyHeader = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+  if (entry.isIntersecting) {
+    header.classList?.remove(`sticky-header`);
+    headerCover.style.display = "inline-block";
+    headerPFP.style.display = "inline-block";
+    headerDetails.style.display = "inline-block";
+    headerExperiences.style.display = "flex";
+  } else {
+    header.classList.add(`sticky-header`);
+    header.style.backgroundColor = "var(--gray-9)";
+    headerCover.style.display = "none";
+    headerPFP.style.display = "none";
+    headerDetails.style.display = "none";
+    headerExperiences.style.display = "none";
+  }
+};
+
+const headerObserver = new IntersectionObserver(stickyHeader, {
+  root: null,
+  threshold: 0.1,
+  rootMargin: `-163px`,
+});
+
+headerObserver.observe(aboutSection);
+
+navBtn.forEach(el => el.addEventListener('click', function (e) {
+  e.preventDefault();
+  document.querySelector(e.target.getAttribute("href")).scrollIntoView({behavior: "smooth"});
+}));
 
 /* Add Experiences */
 let experiences = {
@@ -37,7 +82,7 @@ let experiences = {
   },
   expAkdeniz: {
     type: "education",
-    title: "Electrical Electronic Enginerring Student",
+    title: "Electrical Electronics Enginerring Student",
     organization: "Akdeniz University",
     logo: "img/akdeniz_universitesi_logo.jpg",
     current: true,
@@ -78,6 +123,25 @@ Object.values(experiences).forEach(function (experience) {
       <div class="experience--3">
         <h4 class="body-strong text-primary">Skills</h4>
         ${experience.skills.forEach(el => `<p>burayı yap!</p>`)}
+      </div>
+    </div>
+  `)
+  }
+})
+
+Object.values(experiences).forEach(function (education) {
+  if (education.type === "education") {
+    educationSection.insertAdjacentHTML("beforeend", `
+    <div class="experiences--card radius-7 surface">
+      <div class="experiences--1">
+        <img src=${education.logo} alt="${education.organization} Organization's Logo" class="experience--logo radius-4 border">
+        <h3 class="experience--title subtitle text-title">${education.title}</h3>
+        <p class="experience--organization body text-primary">${education.organization}</p>
+      </div>
+
+      <div class="experience--2">
+        <p class="experience--duration body text-secondary">${education.dateStart.toLocaleString(currLocale, { month: 'short' })} ${education.dateStart.getFullYear()} - ${education.dateEnd ? experience.dateEnd.toLocaleString(currLocale, { month: 'short' }) : "Ongoing"} ${education.dateEnd ? education.dateEnd.getFullYear(): ""}</p>
+        <p class="experience--position-location body text-secondary">${education.environment.join(" • ")}</p>
       </div>
     </div>
   `)
