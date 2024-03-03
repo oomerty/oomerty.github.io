@@ -17,6 +17,9 @@ const experiencesSection = document.querySelector('.experiences');
 
 const educationSection = document.querySelector('.education');
 
+const certificationSection = document.querySelector('.certification');
+const credentialBTN = document.querySelectorAll('.certification-btn');
+
 let now = new Date();
 console.log(now.getUTCMonth());
 
@@ -65,7 +68,7 @@ let experiences = {
     environment: ["Full Time", "Ankara, Türkiye", "Remote"],
     desc: "Currently, I hold the position of lead product designer for an innovative social media website project that is currently under wraps. In this role, I am entrusted with spearheading the design direction and user experience strategies to ensure the seamless integration of cutting-edge features and intuitive functionalities.#As a pivotal member of the project, I am committed to driving forward the vision of this unannounced social media venture and delivering a compelling platform that revolutionizes the way users engage and connect online.",
     skills: ["Design Thinking", "Figma", "User Interfaces", "User Experience", "Communication", "User Oriented Design", "Product Design"],
-    linkedin: null,
+    link: null,
   },
   expTufan: {
     type: "experience",
@@ -77,8 +80,20 @@ let experiences = {
     dateEnd: new Date("May  1 2023"),
     environment: ["Part Time", "Antalya, Türkiye", "In Office"],
     desc: "Currently, I hold the position of lead product designer for an innovative social media platform project that is currently under wraps. In this role, I am entrusted withspearheading the design direction and user experience strategies to ensure the seamless integration of cutting-edge features and intuitive functionalities.#Our team relies on Figma as our primary design tool, utilizing it to create every aspect of the platform. From user experiences to professional-grade tools, our designs are iterated upon based on feedback gathered from professionals across diverse sectors worldwide.",
-    skills: ["Design Thinking", "Figma", "User Interfaces", "User Experience", "Communication", "User Oriented Design", "Product Design"],
-    linkedin: "https://www.linkedin.com/company/akdeniz-tufan-elektromobil/",
+    skills: ["CSS", "Python", "PyQt", "JavaScript", "Communication", "Teamwork"],
+    link: "https://www.linkedin.com/company/akdeniz-tufan-elektromobil/",
+  },
+  expCrowdin: {
+    type: "experience",
+    title: "Volunteer Translator",
+    organization: "Crowdin",
+    logo: "img/smallscale-logo-cWhite.png",
+    current: false,
+    dateStart: new Date("Feb 16 2016"),
+    environment: ["Volunteer"],
+    desc: "As a dedicated volunteer translator and proofreader, I have had the privilege of contributing to a diverse range of projects, including globally recognized platforms such as Minecraft, Discord, Hypixel, Tapatalk, Musixmatch, Alfred Camera, and many others.",
+    skills: ["Localization", "Translation", "English"],
+    link: "https://crowdin.com/profile/ByTheEfsane",
   },
   expAkdeniz: {
     type: "education",
@@ -88,7 +103,7 @@ let experiences = {
     current: true,
     dateStart: new Date("Sept  1 2021"),
     environment: ["Bachelor's Degree", "Antalya, Türkiye", "Engineering Faculty"],
-    linkedin: "https://www.linkedin.com/school/akdeniz-universitesi/",
+    link: "https://www.linkedin.com/school/akdeniz-universitesi/",
   }
 }
 
@@ -122,7 +137,7 @@ Object.values(experiences).forEach(function (experience) {
 
       <div class="experience--3">
         <h4 class="body-strong text-primary">Skills</h4>
-        ${experience.skills.forEach(el => `<p>burayı yap!</p>`)}
+        <p class="body text-primary">${experience.skills?.join(", ")}</p>
       </div>
     </div>
   `)
@@ -189,4 +204,41 @@ Object.values(contact).forEach(function (contactInfo) {
     <a href=${contactInfo.link} class="body text-secondary contact-link"><i class="ph-bold ph-${contactInfo.type}"></i> Link</a>
   </div>
 `)
+})
+
+/* Add Certifications */
+let certificates = {
+  htmlcssJonas: {
+    title: "HTML and CSS",
+    source: "Udemy",
+    publishDate: new Date("Apr 27 2022"),
+    id: "UC-544987ac-8426-4085-a81a-c7612cbfb059",
+    skills: ["CSS", "HTML", "Responsive Web Design", "User Oriented Design", "Web Development"],
+  },
+  uiuxZTM: {
+    title: "UI/UX and Figma",
+    source: "Udemy",
+    publishDate: new Date("Sept 16 2022"),
+    id: "UC-b0047967-fe9c-46ac-918b-70c8e35d91c6",
+    skills: ["User Experience", "Product Design", "User Interface", "User Oriented Design", "Figma"],
+  }
+}
+
+Object.values(certificates).forEach(function (certificate) {
+  certificationSection.insertAdjacentHTML("beforeend", `
+  <div class="certification--card radius-7 surface">
+    <div class="certification--1">
+      <h3 class="certification--title subtitle text-title">${certificate.title}</h3>
+      <p class="certification--organization body text-primary">${certificate.source}</p>
+      <p class="certification--duration body text-secondary">Publish Date: ${certificate.publishDate.toLocaleString(currLocale, { month: 'short' })} ${certificate.publishDate.getFullYear()}</p>
+    </div>
+
+    <div class="certification--2">
+      <h4 class="body-strong text-primary">Skills</h4>
+      <p class="body text-primary">${certificate.skills.join(", ")}</p>
+    </div>
+
+    <button onclick="location.href='https://www.udemy.com/certificate/${certificate.id}/';" class="certification-btn body"><i class="ph-bold ph-certificate"></i> Show Credentials</button>
+  </div>
+  `)
 })

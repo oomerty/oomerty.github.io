@@ -264,3 +264,63 @@ body {
   /*********************/
  /* EDUCATION SECTION */
 /*********************/
+
+  /***********************/
+ /* CREDINTIALS SECTION */
+/***********************/
+.certification {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.certification .section-title {
+  grid-column: 1 / -1;
+}
+
+.certification--card  {
+  position: relative;
+}
+
+.certification--1 {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.certification--2 {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.certification-btn {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+
+  display: flex;
+  padding: 1.4rem 2.8rem;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+  align-self: stretch;
+
+  border-radius: 0.7rem;
+  border: 1px solid #444BDA;
+  background: #4B53F2;
+
+  color: var(--gray-3);
+  text-decoration: none;
+
+  transition: 300ms;
+}
+
+.certification-btn:hover, .certification-btn:active {
+  border: 1px solid #4B53F2;
+  background: #5D64F3;
+}
+
+.certification-btn:link, .certification-btn:visited {
+  border: 1px solid #4B53F2;
+  background: #444BDA;
+}
