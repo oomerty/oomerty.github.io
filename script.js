@@ -222,6 +222,13 @@ let certificates = {
     id: "UC-b0047967-fe9c-46ac-918b-70c8e35d91c6",
     skills: ["User Experience", "Product Design", "User Interface", "User Oriented Design", "Figma"],
   }
+  webdevMeta: {
+    title: "Introduction to Front-End Development",
+    source: "Meta",
+    publishDate: new Date("March  9 2024"),
+    id: "NAFRF2EN44WE",
+    skills: ["CSS", "HTML", "Responsive Web Design", "User Oriented Design", "Web Development"],
+  }
 }
 
 Object.values(certificates).forEach(function (certificate) {
