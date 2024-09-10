@@ -21,12 +21,10 @@ const certificationSection = document.querySelector('.certification');
 const credentialBTN = document.querySelectorAll('.certification-btn');
 
 let now = new Date();
-console.log(now.getUTCMonth());
 
 /* Navigation */
 const stickyHeader = function (entries) {
   const [entry] = entries;
-  console.log(entry);
   if (entry.isIntersecting) {
     header.classList?.remove(`sticky-header`);
     headerCover.style.display = "inline-block";
@@ -221,8 +219,8 @@ let certificates = {
     publishDate: new Date("Sept 16 2022"),
     id: "UC-b0047967-fe9c-46ac-918b-70c8e35d91c6",
     skills: ["User Experience", "Product Design", "User Interface", "User Oriented Design", "Figma"],
-  }
-  webdevMeta: {
+  },
+  webDevMeta: {
     title: "Introduction to Front-End Development",
     source: "Meta",
     publishDate: new Date("March  9 2024"),
